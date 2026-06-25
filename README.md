@@ -65,11 +65,11 @@ configuration = sami_firewall_client.Configuration(
 
 # Enter a context with an instance of the API client
 with sami_firewall_client.ApiClient(configuration) as api_client:
+    # add your access token
+    api_client.set_default_header("Authorization", f"Bearer {BEARER_TOKEN}")
     # Create an instance of the API class
     api_instance = sami_firewall_client.ChatApi(api_client)
-    # add your access token
-    api_instance.set_default_header("Authorization", f"Bearer {BEARER_TOKEN}")
-
+    
     request_body = None # Dict[str, object] | 
 
     try:
