@@ -21,8 +21,6 @@ __all__ = [
     "DEFENDERApi",
     "ORCHESTRATORApi",
     "SAMIApi",
-    "ChatApi",
-    "DefaultApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -32,26 +30,20 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
-    "ChatCompletionRequest",
-    "ChatMessage",
     "DefendRequestModel",
     "DefendResponseModel",
     "DefenseSummary",
     "DocumentScoreModel",
     "HTTPValidationError",
-    "HealthResponseModel",
-    "InfoResponseModel",
     "IngestCommitResponse",
     "IngestSyncRequest",
     "IngestSyncResponse",
-    "Job",
     "LocationInner",
     "PolicyEnforcementSummary",
     "QuarantineReviewRequest",
     "QuarantineReviewResponse",
     "RagQueryRequest",
     "RagQueryResponse",
-    "SignedUrlPayload",
     "ValidationError",
 ]
 
@@ -59,8 +51,6 @@ __all__ = [
 from sami_rag_client.api.defender_api import DEFENDERApi as DEFENDERApi
 from sami_rag_client.api.orchestrator_api import ORCHESTRATORApi as ORCHESTRATORApi
 from sami_rag_client.api.sami_api import SAMIApi as SAMIApi
-from sami_rag_client.api.chat_api import ChatApi as ChatApi
-from sami_rag_client.api.default_api import DefaultApi as DefaultApi
 
 # import ApiClient
 from sami_rag_client.api_response import ApiResponse as ApiResponse
@@ -74,25 +64,19 @@ from sami_rag_client.exceptions import ApiAttributeError as ApiAttributeError
 from sami_rag_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from sami_rag_client.models.chat_completion_request import ChatCompletionRequest as ChatCompletionRequest
-from sami_rag_client.models.chat_message import ChatMessage as ChatMessage
 from sami_rag_client.models.defend_request_model import DefendRequestModel as DefendRequestModel
 from sami_rag_client.models.defend_response_model import DefendResponseModel as DefendResponseModel
 from sami_rag_client.models.defense_summary import DefenseSummary as DefenseSummary
 from sami_rag_client.models.document_score_model import DocumentScoreModel as DocumentScoreModel
 from sami_rag_client.models.http_validation_error import HTTPValidationError as HTTPValidationError
-from sami_rag_client.models.health_response_model import HealthResponseModel as HealthResponseModel
-from sami_rag_client.models.info_response_model import InfoResponseModel as InfoResponseModel
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse as IngestCommitResponse
 from sami_rag_client.models.ingest_sync_request import IngestSyncRequest as IngestSyncRequest
 from sami_rag_client.models.ingest_sync_response import IngestSyncResponse as IngestSyncResponse
-from sami_rag_client.models.job import Job as Job
 from sami_rag_client.models.location_inner import LocationInner as LocationInner
 from sami_rag_client.models.policy_enforcement_summary import PolicyEnforcementSummary as PolicyEnforcementSummary
 from sami_rag_client.models.quarantine_review_request import QuarantineReviewRequest as QuarantineReviewRequest
 from sami_rag_client.models.quarantine_review_response import QuarantineReviewResponse as QuarantineReviewResponse
 from sami_rag_client.models.rag_query_request import RagQueryRequest as RagQueryRequest
 from sami_rag_client.models.rag_query_response import RagQueryResponse as RagQueryResponse
-from sami_rag_client.models.signed_url_payload import SignedUrlPayload as SignedUrlPayload
 from sami_rag_client.models.validation_error import ValidationError as ValidationError
 

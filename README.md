@@ -93,45 +93,31 @@ Class | Method | HTTP request | Description
 *SAMIApi* | [**ingest_commit**](docs/SAMIApi.md#ingest_commit) | **POST** /v1/ingest | Data Ingestion
 *SAMIApi* | [**ingest_sync**](docs/SAMIApi.md#ingest_sync) | **POST** /v1/ingest/sync | Ingest Sync
 *SAMIApi* | [**reject_quarantine_doc**](docs/SAMIApi.md#reject_quarantine_doc) | **POST** /v1/quarantine/{doc_id}/reject | Reject Quarantine
-*ChatApi* | [**adapter_chat**](docs/ChatApi.md#adapter_chat) | **POST** /ai-firewall/firewall/v1/prompt/text | Firewall text chat endpoint
-*DefaultApi* | [**file_sanitization**](docs/DefaultApi.md#file_sanitization) | **POST** /ai-firewall/firewall/v1/file/sanitization | Replace content in uploaded files
-*DefaultApi* | [**multimodal_chat**](docs/DefaultApi.md#multimodal_chat) | **POST** /ai-firewall/firewall/v1/prompt | Multimodal chat completions
 
 
 ## Documentation For Models
 
- - [ChatCompletionRequest](docs/ChatCompletionRequest.md)
- - [ChatMessage](docs/ChatMessage.md)
  - [DefendRequestModel](docs/DefendRequestModel.md)
  - [DefendResponseModel](docs/DefendResponseModel.md)
  - [DefenseSummary](docs/DefenseSummary.md)
  - [DocumentScoreModel](docs/DocumentScoreModel.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
- - [HealthResponseModel](docs/HealthResponseModel.md)
- - [InfoResponseModel](docs/InfoResponseModel.md)
  - [IngestCommitResponse](docs/IngestCommitResponse.md)
  - [IngestSyncRequest](docs/IngestSyncRequest.md)
  - [IngestSyncResponse](docs/IngestSyncResponse.md)
- - [Job](docs/Job.md)
  - [LocationInner](docs/LocationInner.md)
  - [PolicyEnforcementSummary](docs/PolicyEnforcementSummary.md)
  - [QuarantineReviewRequest](docs/QuarantineReviewRequest.md)
  - [QuarantineReviewResponse](docs/QuarantineReviewResponse.md)
  - [RagQueryRequest](docs/RagQueryRequest.md)
  - [RagQueryResponse](docs/RagQueryResponse.md)
- - [SignedUrlPayload](docs/SignedUrlPayload.md)
  - [ValidationError](docs/ValidationError.md)
 
 
 <a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
-
-Authentication schemes defined for the API:
-<a id="HTTPBearer"></a>
-### HTTPBearer
-
-- **Type**: Bearer authentication
+Endpoints do not require authorization.
 
 
 ## Author
