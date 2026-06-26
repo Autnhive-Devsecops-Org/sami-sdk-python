@@ -61,20 +61,26 @@ configuration = sami_firewall_client.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = sami_firewall_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 
 # Enter a context with an instance of the API client
 with sami_firewall_client.ApiClient(configuration) as api_client:
-    # add your access token
-    api_client.set_default_header("Authorization", f"Bearer {BEARER_TOKEN}")
     # Create an instance of the API class
     api_instance = sami_firewall_client.ChatApi(api_client)
-    
-    request_body = None # Dict[str, object] | 
+    chat_completion_request = sami_firewall_client.ChatCompletionRequest() # ChatCompletionRequest | 
 
     try:
         # Firewall text chat endpoint
-        api_response = api_instance.adapter_chat(request_body)
+        api_response = api_instance.adapter_chat(chat_completion_request)
         print("The response of ChatApi->adapter_chat:\n")
         pprint(api_response)
     except ApiException as e:
@@ -95,6 +101,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ChatCompletionRequest](docs/ChatCompletionRequest.md)
+ - [ChatMessage](docs/ChatMessage.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [Job](docs/Job.md)
  - [LocationInner](docs/LocationInner.md)
@@ -105,7 +113,12 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
-Endpoints require authorization bearer token to be added in header.
+
+Authentication schemes defined for the API:
+<a id="HTTPBearer"></a>
+### HTTPBearer
+
+- **Type**: Bearer authentication
 
 
 ## Author

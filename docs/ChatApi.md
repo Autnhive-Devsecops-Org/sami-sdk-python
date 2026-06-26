@@ -8,15 +8,17 @@ Method | HTTP request | Description
 
 
 # **adapter_chat**
-> Dict[str, object] adapter_chat(request_body)
+> Dict[str, object] adapter_chat(chat_completion_request)
 
 Firewall text chat endpoint
 
 ### Example
 
+* Bearer Authentication (HTTPBearer):
 
 ```python
 import sami_firewall_client
+from sami_firewall_client.models.chat_completion_request import ChatCompletionRequest
 from sami_firewall_client.rest import ApiException
 from pprint import pprint
 
@@ -26,16 +28,25 @@ configuration = sami_firewall_client.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = sami_firewall_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with sami_firewall_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sami_firewall_client.ChatApi(api_client)
-    request_body = None # Dict[str, object] | 
+    chat_completion_request = sami_firewall_client.ChatCompletionRequest() # ChatCompletionRequest | 
 
     try:
         # Firewall text chat endpoint
-        api_response = api_instance.adapter_chat(request_body)
+        api_response = api_instance.adapter_chat(chat_completion_request)
         print("The response of ChatApi->adapter_chat:\n")
         pprint(api_response)
     except Exception as e:
@@ -49,7 +60,7 @@ with sami_firewall_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_body** | [**Dict[str, object]**](object.md)|  | 
+ **chat_completion_request** | [**ChatCompletionRequest**](ChatCompletionRequest.md)|  | 
 
 ### Return type
 
@@ -57,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Require authorization bearer token to be added in header.
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 

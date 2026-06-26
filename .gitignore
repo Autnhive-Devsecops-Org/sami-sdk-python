@@ -69,3 +69,4 @@ target/
 .openapi-generator/
 .travis.yml
 git_push.sh
+openapitools.json

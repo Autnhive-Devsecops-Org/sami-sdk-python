@@ -16,6 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from typing import Any, Dict
+from sami_firewall_client.models.chat_completion_request import ChatCompletionRequest
 
 from sami_firewall_client.api_client import ApiClient, RequestSerialized
 from sami_firewall_client.api_response import ApiResponse
@@ -38,7 +39,7 @@ class ChatApi:
     @validate_call
     def adapter_chat(
         self,
-        request_body: Dict[str, Any],
+        chat_completion_request: ChatCompletionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -55,8 +56,8 @@ class ChatApi:
         """Firewall text chat endpoint
 
 
-        :param request_body: (required)
-        :type request_body: Dict[str, object]
+        :param chat_completion_request: (required)
+        :type chat_completion_request: ChatCompletionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -80,7 +81,7 @@ class ChatApi:
         """ # noqa: E501
 
         _param = self._adapter_chat_serialize(
-            request_body=request_body,
+            chat_completion_request=chat_completion_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -105,7 +106,7 @@ class ChatApi:
     @validate_call
     def adapter_chat_with_http_info(
         self,
-        request_body: Dict[str, Any],
+        chat_completion_request: ChatCompletionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -122,8 +123,8 @@ class ChatApi:
         """Firewall text chat endpoint
 
 
-        :param request_body: (required)
-        :type request_body: Dict[str, object]
+        :param chat_completion_request: (required)
+        :type chat_completion_request: ChatCompletionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -147,7 +148,7 @@ class ChatApi:
         """ # noqa: E501
 
         _param = self._adapter_chat_serialize(
-            request_body=request_body,
+            chat_completion_request=chat_completion_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -172,7 +173,7 @@ class ChatApi:
     @validate_call
     def adapter_chat_without_preload_content(
         self,
-        request_body: Dict[str, Any],
+        chat_completion_request: ChatCompletionRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -189,8 +190,8 @@ class ChatApi:
         """Firewall text chat endpoint
 
 
-        :param request_body: (required)
-        :type request_body: Dict[str, object]
+        :param chat_completion_request: (required)
+        :type chat_completion_request: ChatCompletionRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -214,7 +215,7 @@ class ChatApi:
         """ # noqa: E501
 
         _param = self._adapter_chat_serialize(
-            request_body=request_body,
+            chat_completion_request=chat_completion_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -234,7 +235,7 @@ class ChatApi:
 
     def _adapter_chat_serialize(
         self,
-        request_body,
+        chat_completion_request,
         _request_auth,
         _content_type,
         _headers,
@@ -260,8 +261,8 @@ class ChatApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if request_body is not None:
-            _body_params = request_body
+        if chat_completion_request is not None:
+            _body_params = chat_completion_request
 
 
         # set the HTTP header `Accept`
@@ -288,6 +289,7 @@ class ChatApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'HTTPBearer'
         ]
 
         return self.api_client.param_serialize(

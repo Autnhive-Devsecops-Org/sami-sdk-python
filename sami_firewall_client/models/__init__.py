@@ -13,6 +13,8 @@
 """  # noqa: E501
 
 # import models into model package
+from sami_firewall_client.models.chat_completion_request import ChatCompletionRequest
+from sami_firewall_client.models.chat_message import ChatMessage
 from sami_firewall_client.models.http_validation_error import HTTPValidationError
 from sami_firewall_client.models.job import Job
 from sami_firewall_client.models.location_inner import LocationInner

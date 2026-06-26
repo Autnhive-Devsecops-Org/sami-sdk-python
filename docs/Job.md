@@ -1,5 +1,6 @@
 # Job
 
+Represents a single signed URL processing job.  Attributes:     id: str                    Tracking ID for the job — used for logging and tracing.     signed_url (str):          Pre-signed URL to download input file.     file_name  (str):          File name with extension — used to detect                                file type when URL has no extension.     file_size  (Optional[int]):File size in bytes — used for logging only.     enhanced_privacy_mode (bool): Flag to indicate if enhanced privacy mode is enabled for this job.
 
 ## Properties
 

@@ -29,6 +29,8 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "ChatCompletionRequest",
+    "ChatMessage",
     "HTTPValidationError",
     "Job",
     "LocationInner",
@@ -52,6 +54,8 @@ from sami_firewall_client.exceptions import ApiAttributeError as ApiAttributeErr
 from sami_firewall_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from sami_firewall_client.models.chat_completion_request import ChatCompletionRequest as ChatCompletionRequest
+from sami_firewall_client.models.chat_message import ChatMessage as ChatMessage
 from sami_firewall_client.models.http_validation_error import HTTPValidationError as HTTPValidationError
 from sami_firewall_client.models.job import Job as Job
 from sami_firewall_client.models.location_inner import LocationInner as LocationInner

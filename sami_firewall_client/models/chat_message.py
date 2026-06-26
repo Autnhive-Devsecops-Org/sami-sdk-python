@@ -17,23 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class Job(BaseModel):
+class ChatMessage(BaseModel):
     """
-    Represents a single signed URL processing job.  Attributes:     id: str                    Tracking ID for the job — used for logging and tracing.     signed_url (str):          Pre-signed URL to download input file.     file_name  (str):          File name with extension — used to detect                                file type when URL has no extension.     file_size  (Optional[int]):File size in bytes — used for logging only.     enhanced_privacy_mode (bool): Flag to indicate if enhanced privacy mode is enabled for this job.
+    ChatMessage
     """ # noqa: E501
-    id: StrictStr
-    signed_url: StrictStr
-    file_name: StrictStr
-    policy_packs: List[StrictStr]
-    file_size: Optional[StrictInt] = None
-    enhanced_privacy_mode: Optional[StrictBool] = False
-    __properties: ClassVar[List[str]] = ["id", "signed_url", "file_name", "policy_packs", "file_size", "enhanced_privacy_mode"]
+    role: StrictStr = Field(description="The role of the messenger (e.g., 'user', 'assistant', 'system')")
+    content: StrictStr = Field(description="The text content of the message")
+    __properties: ClassVar[List[str]] = ["role", "content"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -53,7 +49,7 @@ class Job(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Job from a JSON string"""
+        """Create an instance of ChatMessage from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,16 +70,11 @@ class Job(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if file_size (nullable) is None
-        # and model_fields_set contains the field
-        if self.file_size is None and "file_size" in self.model_fields_set:
-            _dict['file_size'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Job from a dict"""
+        """Create an instance of ChatMessage from a dict"""
         if obj is None:
             return None
 
@@ -91,12 +82,8 @@ class Job(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "signed_url": obj.get("signed_url"),
-            "file_name": obj.get("file_name"),
-            "policy_packs": obj.get("policy_packs"),
-            "file_size": obj.get("file_size"),
-            "enhanced_privacy_mode": obj.get("enhanced_privacy_mode") if obj.get("enhanced_privacy_mode") is not None else False
+            "role": obj.get("role"),
+            "content": obj.get("content")
         })
         return _obj
 
