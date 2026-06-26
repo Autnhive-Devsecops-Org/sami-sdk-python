@@ -18,6 +18,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
+from sami_rag_client.models.ingest_commit_request import IngestCommitRequest
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse
 from sami_rag_client.models.ingest_sync_request import IngestSyncRequest
 from sami_rag_client.models.ingest_sync_response import IngestSyncResponse
@@ -352,7 +353,7 @@ class SAMIApi:
     def ingest_commit(
         self,
         authorization: Optional[StrictStr] = None,
-        ingest_sync_request: Optional[IngestSyncRequest] = None,
+        ingest_commit_request: Optional[IngestCommitRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -371,8 +372,8 @@ class SAMIApi:
 
         :param authorization:
         :type authorization: str
-        :param ingest_sync_request:
-        :type ingest_sync_request: IngestSyncRequest
+        :param ingest_commit_request:
+        :type ingest_commit_request: IngestCommitRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -397,7 +398,7 @@ class SAMIApi:
 
         _param = self._ingest_commit_serialize(
             authorization=authorization,
-            ingest_sync_request=ingest_sync_request,
+            ingest_commit_request=ingest_commit_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -423,7 +424,7 @@ class SAMIApi:
     def ingest_commit_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        ingest_sync_request: Optional[IngestSyncRequest] = None,
+        ingest_commit_request: Optional[IngestCommitRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -442,8 +443,8 @@ class SAMIApi:
 
         :param authorization:
         :type authorization: str
-        :param ingest_sync_request:
-        :type ingest_sync_request: IngestSyncRequest
+        :param ingest_commit_request:
+        :type ingest_commit_request: IngestCommitRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -468,7 +469,7 @@ class SAMIApi:
 
         _param = self._ingest_commit_serialize(
             authorization=authorization,
-            ingest_sync_request=ingest_sync_request,
+            ingest_commit_request=ingest_commit_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -494,7 +495,7 @@ class SAMIApi:
     def ingest_commit_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        ingest_sync_request: Optional[IngestSyncRequest] = None,
+        ingest_commit_request: Optional[IngestCommitRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -513,8 +514,8 @@ class SAMIApi:
 
         :param authorization:
         :type authorization: str
-        :param ingest_sync_request:
-        :type ingest_sync_request: IngestSyncRequest
+        :param ingest_commit_request:
+        :type ingest_commit_request: IngestCommitRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -539,7 +540,7 @@ class SAMIApi:
 
         _param = self._ingest_commit_serialize(
             authorization=authorization,
-            ingest_sync_request=ingest_sync_request,
+            ingest_commit_request=ingest_commit_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -560,7 +561,7 @@ class SAMIApi:
     def _ingest_commit_serialize(
         self,
         authorization,
-        ingest_sync_request,
+        ingest_commit_request,
         _request_auth,
         _content_type,
         _headers,
@@ -588,8 +589,8 @@ class SAMIApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if ingest_sync_request is not None:
-            _body_params = ingest_sync_request
+        if ingest_commit_request is not None:
+            _body_params = ingest_commit_request
 
 
         # set the HTTP header `Accept`

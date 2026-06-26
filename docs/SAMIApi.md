@@ -86,7 +86,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ingest_commit**
-> IngestCommitResponse ingest_commit(authorization=authorization, ingest_sync_request=ingest_sync_request)
+> IngestCommitResponse ingest_commit(authorization=authorization, ingest_commit_request=ingest_commit_request)
 
 Data Ingestion
 
@@ -95,8 +95,8 @@ Data Ingestion
 
 ```python
 import sami_rag_client
+from sami_rag_client.models.ingest_commit_request import IngestCommitRequest
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse
-from sami_rag_client.models.ingest_sync_request import IngestSyncRequest
 from sami_rag_client.rest import ApiException
 from pprint import pprint
 
@@ -112,11 +112,11 @@ with sami_rag_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sami_rag_client.SAMIApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    ingest_sync_request = sami_rag_client.IngestSyncRequest() # IngestSyncRequest |  (optional)
+    ingest_commit_request = sami_rag_client.IngestCommitRequest() # IngestCommitRequest |  (optional)
 
     try:
         # Data Ingestion
-        api_response = api_instance.ingest_commit(authorization=authorization, ingest_sync_request=ingest_sync_request)
+        api_response = api_instance.ingest_commit(authorization=authorization, ingest_commit_request=ingest_commit_request)
         print("The response of SAMIApi->ingest_commit:\n")
         pprint(api_response)
     except Exception as e:
@@ -131,7 +131,7 @@ with sami_rag_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **ingest_sync_request** | [**IngestSyncRequest**](IngestSyncRequest.md)|  | [optional] 
+ **ingest_commit_request** | [**IngestCommitRequest**](IngestCommitRequest.md)|  | [optional] 
 
 ### Return type
 
