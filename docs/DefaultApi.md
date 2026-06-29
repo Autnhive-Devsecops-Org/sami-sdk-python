@@ -20,30 +20,41 @@ Replace content in uploaded files
 ```python
 import sami_firewall_client
 from sami_firewall_client.models.signed_url_payload import SignedUrlPayload
+from sami_firewall_client.models.job import Job
 from sami_firewall_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sami_firewall_client.Configuration(
-    host = "http://localhost"
-)
+# Configuration: host + bearer token (single source of truth)
+HOST = "https://sami.autnhive.net"
+BEARER_TOKEN = "sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"  # dummy token, replace with your API key
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+configuration = sami_firewall_client.Configuration(host=HOST)
+# Keep the token on the Configuration object as the single source of truth.
+configuration.access_token = BEARER_TOKEN
 
-# Configure Bearer authorization: HTTPBearer
-configuration = sami_firewall_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+# Build an ApiClient that applies the Authorization header on every request.
+api_client = sami_firewall_client.ApiClient(
+    configuration,
+    header_name="Authorization",
+    header_value=f"Bearer {configuration.access_token}",
 )
 
 # Enter a context with an instance of the API client
-with sami_firewall_client.ApiClient(configuration) as api_client:
+with api_client:
     # Create an instance of the API class
     api_instance = sami_firewall_client.DefaultApi(api_client)
-    signed_url_payload = sami_firewall_client.SignedUrlPayload() # SignedUrlPayload | 
+    signed_url_payload = SignedUrlPayload(
+        jobs=[
+            Job(
+                id="89f0b583-3833-4ce0-9c15-93a1dd3a0f5d",
+                signed_url="https://example-object-storage/path/to/Test_Profile_by_QA.docx",
+                file_name="Test_Profile_by_QA.docx",
+                file_size=16357,
+                policy_packs=["default"],
+                enhanced_privacy_mode=False,
+            )
+        ]
+    ) # SignedUrlPayload | 
 
     try:
         # Replace content in uploaded files
@@ -99,36 +110,37 @@ import sami_firewall_client
 from sami_firewall_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sami_firewall_client.Configuration(
-    host = "http://localhost"
-)
+# Configuration: host + bearer token (single source of truth)
+HOST = "https://sami.autnhive.net"
+BEARER_TOKEN = "sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"  # dummy token, replace with your API key
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+configuration = sami_firewall_client.Configuration(host=HOST)
+# Keep the token on the Configuration object as the single source of truth.
+configuration.access_token = BEARER_TOKEN
 
-# Configure Bearer authorization: HTTPBearer
-configuration = sami_firewall_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+# Build an ApiClient that applies the Authorization header on every request.
+api_client = sami_firewall_client.ApiClient(
+    configuration,
+    header_name="Authorization",
+    header_value=f"Bearer {configuration.access_token}",
 )
 
 # Enter a context with an instance of the API client
-with sami_firewall_client.ApiClient(configuration) as api_client:
+with api_client:
     # Create an instance of the API class
     api_instance = sami_firewall_client.DefaultApi(api_client)
-    prompt = 'prompt_example' # str | Free-form prompt text (optional)
-    content = 'content_example' # str | Optional content payload (optional)
-    text = 'text_example' # str | Optional text input (optional)
-    input = 'input_example' # str | Optional input input (optional)
+    # All inputs are optional; a plain text prompt is the simplest call. The
+    # file/docx/pdf/image/audio fields accept bytes for multimodal requests.
+    prompt = 'What is the capital of India?' # str | Free-form prompt text (optional)
+    content = None # str | Optional content payload (optional)
+    text = None # str | Optional text input (optional)
+    input = None # str | Optional input input (optional)
     file = None # bytes | Generic file upload (optional) (optional)
     docx = None # bytes | DOCX upload (optional) (optional)
     pdf = None # bytes | PDF upload (optional) (optional)
     image = None # bytes | Image upload (optional) (optional)
     audio = None # bytes | Audio upload (optional) (optional)
-    model = 'model_example' # str | Optional model name (optional)
+    model = None # str | Optional model name (optional)
 
     try:
         # Multimodal chat completions
